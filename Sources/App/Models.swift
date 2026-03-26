@@ -1,7 +1,11 @@
 import Foundation
 
-struct TaskItem: Codable, Sendable {
+struct CyberGuide: Codable, Sendable {
     let id: Int64?
     var title: String
-    var isCompleted: Bool
+    var category: String
+    var riskLevel: String
+    var description: String
+    var protectionTip: String
+    var createdAt: String
 }
