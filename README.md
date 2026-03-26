@@ -75,17 +75,16 @@ Une fois l’espace prêt, VS Code s’ouvre directement dans le navigateur.
 
 ```bash
 ./build.sh
-```bash
+```
 
 ### 2. Lancer le serveur
 
 ```bash
 ./run.sh
-```bash
+```
 
-### 2. Ouvrir l’application
+### 3. Ouvrir l’application
 Dans GitHub Codespaces, ouvrir l’onglet Ports puis accéder au port 8080.
 
-## Auteur
-```md  
+## Auteur 
 Projet réalisé par Brenda de Oliveira dos Santos
