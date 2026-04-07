@@ -8,6 +8,10 @@ let db = try Database.setup()
 // Setup Web Server (Hummingbird)
 let router = Router()
 
+func decodeFormValue(_ value: String) -> String {
+    return value.replacingOccurrences(of: "+", with: " ").removingPercentEncoding ?? value
+}
+
 // Home page with search + risk filter
 router.get("/") { request, _ -> HTML in
     let uriString = String(request.uri.description)
@@ -66,12 +70,12 @@ router.post("/create") { request, _ -> Response in
     var components = URLComponents()
     components.percentEncodedQuery = bodyString
 
-    let title = components.queryItems?.first(where: { $0.name == "title" })?.value ?? ""
-    let category = components.queryItems?.first(where: { $0.name == "category" })?.value ?? ""
-    let riskLevel = components.queryItems?.first(where: { $0.name == "riskLevel" })?.value ?? ""
-    let description = components.queryItems?.first(where: { $0.name == "description" })?.value ?? ""
-    let protectionTip = components.queryItems?.first(where: { $0.name == "protectionTip" })?.value ?? ""
-    let createdAt = components.queryItems?.first(where: { $0.name == "createdAt" })?.value ?? ""
+    let title = decodeFormValue(components.queryItems?.first(where: { $0.name == "title" })?.value ?? "")
+    let category = decodeFormValue(components.queryItems?.first(where: { $0.name == "category" })?.value ?? "")
+    let riskLevel = decodeFormValue(components.queryItems?.first(where: { $0.name == "riskLevel" })?.value ?? "")
+    let description = decodeFormValue(components.queryItems?.first(where: { $0.name == "description" })?.value ?? "")
+    let protectionTip = decodeFormValue(components.queryItems?.first(where: { $0.name == "protectionTip" })?.value ?? "")
+    let createdAt = decodeFormValue(components.queryItems?.first(where: { $0.name == "createdAt" })?.value ?? "")
 
     guard !title.isEmpty,
           !category.isEmpty,
@@ -107,11 +111,11 @@ router.post("/update/:id") { request, context -> Response in
     var components = URLComponents()
     components.percentEncodedQuery = bodyString
 
-    let title = components.queryItems?.first(where: { $0.name == "title" })?.value ?? ""
-    let category = components.queryItems?.first(where: { $0.name == "category" })?.value ?? ""
-    let riskLevel = components.queryItems?.first(where: { $0.name == "riskLevel" })?.value ?? ""
-    let description = components.queryItems?.first(where: { $0.name == "description" })?.value ?? ""
-    let protectionTip = components.queryItems?.first(where: { $0.name == "protectionTip" })?.value ?? ""
+    let title = decodeFormValue(components.queryItems?.first(where: { $0.name == "title" })?.value ?? "")
+    let category = decodeFormValue(components.queryItems?.first(where: { $0.name == "category" })?.value ?? "")
+    let riskLevel = decodeFormValue(components.queryItems?.first(where: { $0.name == "riskLevel" })?.value ?? "")
+    let description = decodeFormValue(components.queryItems?.first(where: { $0.name == "description" })?.value ?? "")
+    let protectionTip = decodeFormValue(components.queryItems?.first(where: { $0.name == "protectionTip" })?.value ?? "")
 
     guard !title.isEmpty,
           !category.isEmpty,

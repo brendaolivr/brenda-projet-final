@@ -212,7 +212,7 @@ struct Views {
 
                         <textarea name="description" placeholder="Description du risque numérique"></textarea>
                         <textarea name="protectionTip" placeholder="Conseil de protection" required></textarea>
-                        <input type="text" name="createdAt" placeholder="Date de création (ex. 2026-03-24)" required>
+                        <input type="text" name="createdAt" placeholder="Date de création (ex. 07/04/2026)" required>
                         <button type="submit">Ajouter la fiche</button>
                     </form>
                 </section>
