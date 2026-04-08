@@ -1,7 +1,7 @@
 import SQLite
 import Foundation
 
-// Connection uses an internal serial queue, so it is safe to mark Sendable.
+
 extension Connection: @unchecked @retroactive Sendable {}
 
 struct Database {
